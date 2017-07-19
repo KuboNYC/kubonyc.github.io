@@ -1,0 +1,21 @@
+<div class="page__work page__work--inactive">
+<main class="work__container work__container--inactive">
+    <a class="work__trigger work__trigger--enable" href="/work/" data-name="work"></a>
+    <div class="work__content">
+        <div class="about__title">
+            <p class="p--black">Selected Work</p>
+            <p class="p--orange">&mdash;</p>
+        </div>
+        <div class="work__items">
+            {% assign projects = site.projects | sort %} {% for project in site.projects %}
+            <a href="{{ project.url }}" id="work__item" class="item" style="background-color: {{ project.color }}; background-image: url('/assets/img/{{ project.folder }}/thumb.png');" data-name="project">
+                <div class="item__meta">
+                    <h3 class="item__meta--title">{{ project.title }}</h3 class="item__title">
+                          <p class="item__meta--tags">{{ project.tags | sort | join: " \ " }}</p>
+                      </div>
+                  </a>
+              {% endfor %}
+          </div>
+      </div>
+  </main>
+</div>

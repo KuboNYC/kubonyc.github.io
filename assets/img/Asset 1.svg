@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 229.64 382.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #231f20;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 76.54px;
+      }
+    </style>
+  </defs>
+  <title>Asset 1</title>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Logo">
+      <g id="Face">
+        <g id="Eyes">
+          <line class="cls-1" x1="38.27" y1="38.27" x2="38.27" y2="153.07"/>
+          <line class="cls-1" x1="191.37" y1="38.27" x2="191.37" y2="153.07"/>
+        </g>
+        <g id="Smile">
+          <path class="cls-1" d="M191.37,255.27s0,89.1-76.5,89.1-76.5-89.1-76.5-89.1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

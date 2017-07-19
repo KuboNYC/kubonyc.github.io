@@ -1,0 +1,77 @@
+button, input[type="submit"]
+  +block
+  +ease
+  +button-reset
+  +m-l(20px)
+  +m-t(20px)
+  border-radius: 5px
+  -webkit-appearance: none
+  background-color: $c-orange
+  padding: 20px
+  color: white
+  width: 100%
+  &:hover
+    background-color: $c-dark-gray
+
+select
+  +p(2px)
+  +m-b(5px)
+  +b-0
+  +b-b($c-orange)
+  min-width: 90px
+  border-radius: 1px
+  background-color: transparent
+  font-size: 0.875em
+  color: $c-orange
+  -webkit-appearance: none
+  choice
+    color: $c-orange
+textarea
+    +ease
+    +block
+    +input-reset
+    +b($c-orange)
+    padding: 10px
+    border-radius: 5px
+    font-size: 1em
+    letter-spacing: 0.03em
+    color: $c-orange
+    -webkit-appearance: none
+    width: 100%
+    min-height: 150px
+    &::placeholder
+      color: $c-orange
+    &:focus
+      +b($c-dark-gray)
+      background-color: $c-dark-gray
+      color: white
+label
+  +i-block
+  +m-b(5px)
+  color: $c-dark-gray
+  font-weight: bold
+input[type="text"]
+  +ease
+  +block
+  +input-reset
+  +b($c-orange)
+  +m-b(5px)
+  padding: 10px
+  border-radius: 5px
+  font-size: 1em
+  letter-spacing: 0.03em
+  color: $c-orange
+  -webkit-appearance: none
+  width: 100%
+  &::placeholder
+    color: $c-orange
+  &:focus
+    +b($c-dark-gray)
+    background-color: $c-dark-gray
+    color: white
+fieldset
+  +b($c-orange)
+input[type="radio"]
+  width: 100%
+  -webkit-appearance: radio
+  +inline

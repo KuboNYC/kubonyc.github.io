@@ -1,0 +1,193 @@
+.page__about
+  width: 100%
+  min-height: 100vh
+  +p
+  +media($content-width)
+      padding: 40px 20px 20px 20px
+
+.about
+  &__content
+    +rel
+    +p-t
+    +p-b
+    +blur(3px)
+    +m-t
+    +m-b
+    width: 540px
+    max-width: 100%
+    opacity: 0.2
+    transition: opacity .5s ease-in-out
+    height: 100%
+    line-height: 1.5em
+  &--active
+    opacity: 1
+    +blur(0)
+  &__title
+    p
+      &:first-of-type
+        +m-b-0
+      &:nth-of-type(2)
+        +m-t-0
+  &__trigger
+    +ease
+    +fix
+    +pin-tl
+    width: 150%
+    height: 100%
+    margin-left: -25%
+    cursor: url('/assets/img/cursors/about.png') 25 25, auto
+    z-index: 5
+    &:hover
+      background-color: transparent
+      padding: 0
+    &--disable
+      pointer-events: none
+      cursor: default !important
+
+hr
+  +b-0
+  +b-b
+  +m-t(30px)
+  +m-b(30px)
+
+.introduction
+  &__callout
+    font-size: 2.5em
+    font-family: 'Usual', sans-serif
+    line-height: 1.25em
+    color: $c-orange
+    font-weight: 600
+    letter-spacing: -0.017em
+    +media($content-width)
+      font-size: 1.65em
+    p
+      margin-bottom: 20px
+    span
+      +i-block
+      width: 5px
+      height: 5px
+      border-radius: 50%
+      margin-left: -1px
+      background-color: $c-dark-gray
+
+.services__list
+  +list-reset
+  +flex
+  +flex-wrap
+  margin-left: -20px
+  li
+    width: calc(33.33% - 20px)
+    margin-left: 20px
+    border: 1px solid $c-light-gray
+    border-radius: 5px
+    text-align: center
+    padding: 20px
+    margin-bottom: 20px
+    font-size: 13px
+    +media($content-width)
+      width: calc(50% - 20px)
+
+#contact
+  +m-t-0
+  &::before
+    content: ''
+    display: block
+    height: 40px
+    margin-top: -40px
+
+.contact
+  form
+    +m-b
+    +flex
+    +flex-wrap
+    +m-l(-20px)
+  .input__container
+    +block
+    width: calc(50% - 20px)
+    +m-b(20px)
+    +m-l(20px)
+    +media($content-width)
+      width: 100%
+    &--wide
+      width: 100%
+      +m-l(20px)
+      +m-b(20px)
+  .form__toggle
+    +clearfix
+    +block
+    +rel
+    +m-t
+    .toggle__item
+      .form__toggle--label
+        +b($c-light-gray)
+        +ease
+        +m-0
+        +m-b
+        width: calc(50% - 10px)
+        padding: 10px 20px
+        text-align: center
+        border-radius: 5px
+        cursor: pointer
+        +media($content-width)
+          width: 100%
+          +m-b(20px)
+        &:first-of-type
+          margin-right: 15px
+        &:hover
+          background-color: $c-light-gray
+      input[type="radio"]
+        display: none
+      input[type="radio"]:checked + .form__toggle--label
+        background-color: $c-dark-gray
+        color: white
+        +b($c-dark-gray)
+        box-shadow: 0 5px 15px -4px rgba(black, 0.5)
+      #form__toggle--business:checked ~ .business--visible
+        +block
+      #form__toggle--general:checked ~ .business--visible
+        +hidden
+      form
+        #message__field
+          display: none
+
+.input__services
+  -webkit-margin-start: 0
+  -webkit-margin-before: 0
+  -webkit-padding-start: 0
+  -webkit-padding-before: 0
+  -webkit-padding-end: 0
+  -webkit-padding-after: 0
+  border: none
+  legend
+    font-weight: bold
+    -webkit-padding: 0
+    color: $c-dark-gray
+    margin: 0
+    +p-0
+  &--list
+    -webkit-margin-before: 10px
+    -webkit-margin-after: 0
+    +list-reset
+    +flex
+    +flex-wrap
+    +justify-start
+  .services__list--item
+    +rel
+    +i-block
+    width: calc(33.33% - 10px)
+    +m-r(10px)
+    +m-b(10px)
+    +media($content-width)
+      +m-r(20px)
+      width: calc(50% - 20px)
+    label
+      font-size: 14px
+      font-weight: normal
+      color: $c-text-gray
+      cursor: pointer
+    input[type="checkbox"]
+      cursor: pointer
+      // +abs
+      // +pin-tl
+      // opacity: 0
+      &:checked

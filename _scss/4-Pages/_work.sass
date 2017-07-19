@@ -1,0 +1,118 @@
+.page__work
+  +fix
+  +pin-tr
+  +ease(.4s)
+  background-color: $c-light-gray
+  min-height: 100vh
+  height: 100%
+  width: calc(100% - 155px)
+  z-index: 3
+  overflow: hidden
+  +media($content-width)
+    width: 100%
+    max-height: calc(100% - 100px)
+    top: 100px
+    min-height: auto
+  &--inactive
+    transform: translateX(465px)
+    +media($content-width)
+      transform: translateY(calc(88vh - 100px))
+    .work__indicator
+      margin-left: 0
+      opacity: 1
+
+.work
+  &__indicator
+    +abs
+    +block
+    width: 20px
+    height: 20px
+    transition: all .3s ease-out
+    top: 50%
+    left: 30px
+    transform-origin: center center
+    color: $c-text-gray
+    font-size: 10px
+    z-index: 21
+    opacity: 0
+    pointer-events: none
+    svg
+      .mouse
+        stroke: #AAA
+    p
+      +m-0
+  &__container
+    height: 100%
+    transition: opacity .5s ease-in-out
+    +rel
+    +clearfix
+    &--inactive
+      +blur(20px)
+      opacity: 0.3
+      +media($content-width)
+        +blur(0)
+        opacity: 1
+      .item
+        pointer-events: none
+  &__trigger
+    pointer-events: none
+    cursor: default
+    &:hover
+        background-color: transparent
+        padding: 0
+    &--enable
+      +fix
+      +pin-full
+      +ease
+      pointer-events: auto
+      cursor: url('/assets/img/cursors/work.png') 25 25, auto
+  &__content
+    padding: 35px 40px 40px 40px
+    +media($content-width)
+      padding: 15px 20px 20px 20px
+    .about__title
+        margin-top: -5px
+  &__items
+    +m-t(45px)
+    width: 100%
+    +media($content-width)
+      +m-t(20px)
+
+.item
+  +ease
+  +block
+  +rel
+  +m-b
+  width: 100%
+  height: 60vh
+  background-color: white
+  background-repeat: no-repeat
+  background-position: right bottom
+  background-size: contain
+  cursor: pointer
+  text-decoration: none
+  +media($content-width)
+    +m-b(20px)
+    height: 73vh
+  &:last-of-type
+    +m-b-0
+  &:hover
+    background-color: $c-dark-gray !important
+  &__meta
+    +abs
+    +pin-bl
+    +p(20px)
+    +media($content-width)
+      +rel
+    &--title
+      +m-b(5px)
+      color: white
+      text-transform: uppercase
+      font-family: 'Usual', sans-serif
+      letter-spacing: 1px
+      +media($content-width)
+          font-size: 2.6em
+    &--tags
+      +m-0
+      color: white !important
+      opacity: 0.5

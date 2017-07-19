@@ -1,0 +1,197 @@
+var aboutTrigger = $('.about__trigger'),
+    aboutPage = $('.about__content'),
+    workTrigger = $('.work__trigger'),
+    workPage = $('.page__work'),
+    workContainer = $('.work__container'),
+    item = $('.item'),
+    body = $('body'),
+    logo = $('.header__logo'),
+    projectNav = $('.project__navigation'),
+    projectContainer = $('.page__project'),
+    projectContent = $('.project__content'),
+    close = $('.project__close');
+
+$(document).ready(function() {
+    ajaxProject();
+    layoutClickEvent();
+    formToggle();
+    projectClose();
+    if (window.location.href.indexOf('work') > -1) {
+        History.replaceState({page: 'work'}, "Kubo at Work", '/work/');
+    } else if (window.location.href.indexOf('contact') > -1) {
+        History.replaceState({page: 'contact'}, "Contact Kubo", '/contact/');
+        $('html, body').animate({
+            scrollTop: $('#contact').offset().top - 120
+        }, 500);
+    } else if (location.pathname == '/') {
+        History.replaceState({page: 'home'}, "Kubo.", '/');
+    } else {
+        var state = History.getState();
+        History.replaceState({page: 'project'}, state.title, state.url);
+    }
+});
+
+window.onstatechange = function(e) {
+    var state = History.getState();
+    console.log(state.data.page);
+    if (state.data.page == 'home') {
+        projectInactive();
+        aboutActive();
+    }
+    if (state.data.page === 'work') {
+        projectInactive();
+        workActive();
+    }
+    if (state.data.page === 'project') {
+        var state = History.getState();
+        loadContent(state.url);
+    }
+    if (state.data.page === 'contact') {
+        projectInactive();
+        aboutActive();
+        setTimeout(function() {
+            $('html, body').animate({
+                scrollTop: $('#contact').offset().top - 120
+            }, 500);
+        }, 250);
+    }
+};
+
+window.onload = function() {
+    $('#loading').addClass('loaded');
+};
+
+
+function projectActive() {
+    projectContainer.scrollTop(0).addClass('page__project--active');
+    projectContent.fadeIn('slow');
+    projectNav.addClass('project__navigation--active');
+    body.css('overflow', 'hidden');
+    $('.contact__link').click(function(e) {
+        e.preventDefault();
+        projectInactive();
+        aboutActive();
+        $('html, body').animate({
+            scrollTop: $('#contact').offset().top - 120
+        }, 500);
+        History.pushState({page: 'contact'}, "Contact Kubo", '/contact/');
+    });
+}
+
+function projectInactive() {
+    projectContent.fadeOut('slow');
+    projectContainer.removeClass('page__project--active');
+    projectNav.removeClass('project__navigation--active');
+}
+
+function aboutActive() {
+    body.css('overflow', 'auto');
+    workPage.css('overflow', 'hidden');
+    aboutTrigger.addClass('about__trigger--disable');
+    workContainer.addClass('work__container--inactive');
+    aboutPage.addClass('about--active');
+    workPage.addClass('page__work--inactive');
+    workTrigger.addClass('work__trigger--enable');
+    logo.removeClass('header__logo--small');
+    workPage.animate({
+        scrollTop: 0
+    });
+}
+
+function workActive() {
+    workPage.css('overflow', 'auto');
+    body.css('overflow', 'hidden');
+    logo.addClass('header__logo--small');
+    workTrigger.removeClass('work__trigger--enable');
+    aboutTrigger.removeClass('about__trigger--disable');
+    workPage.removeClass('page__work--inactive');
+    aboutPage.removeClass('about--active');
+    workContainer.removeClass('work__container--inactive');
+}
+
+function layoutClickEvent() {
+    aboutTrigger.on('click', function(e) {
+        e.preventDefault();
+        var state = $(this).attr('data-name');
+        projectInactive();
+        aboutActive();
+        $('html, body').animate({
+            scrollTop: 0
+        });
+        History.pushState({page: state}, "Kubo.", $(this).attr('href'));
+    });
+    workTrigger.on('click', function(e) {
+        e.preventDefault();
+        var state = $(this).attr('data-name');
+        projectInactive();
+        workActive();
+        History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
+    });
+    logo.on('click', function(e) {
+        e.preventDefault();
+        var state = $(this).attr('data-name');
+        projectInactive();
+        aboutActive();
+        $('html, body').animate({
+            scrollTop: 0
+        });
+        History.pushState({page: 'home'}, "Kubo.", $(this).attr('href'));
+    });
+}
+
+function formToggle() {
+    $('#form__toggle--general').click(function() {
+        if ($(this).is(':checked')) {
+            $('.business--visible').css('display', 'none');
+            $('#message__field').css('display', 'block');
+            $('#company__field').addClass('input__container--wide');
+        }
+    });
+    $('#form__toggle--business').click(function() {
+        if ($(this).is(':checked')) {
+            $('.business--visible').css('display', 'block');
+            $('#message__field').css('display', 'none');
+            $('#company__field').removeClass('input__container--wide');
+            $('.business--visible > .require-if-active').prop('required', 'false');
+        }
+    });
+    if ($('.require-if-active').is(':visible')) {
+        $(this).prop('required', 'true');
+    } else {
+        $(this).prop('required', 'false');
+    }
+}
+
+function projectClose() {
+    close.on('click', function(e) {
+        e.preventDefault();
+        var state = $(this).attr('data-name');
+        projectInactive();
+        workActive();
+        History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
+    });
+}
+
+function loadContent(e) {
+    $.ajax(e, {
+        success: function(content) {
+            projectContent.html($(content).find('.project__content'));
+            workActive();
+            projectActive();
+            History.pushState({page: 'project'}, $(content).find('.project__title').text(), e);
+        },
+        error: function() {}
+    });
+}
+
+function ajaxProject() {
+
+    item.click(function(e) {
+        e.preventDefault();
+        var state = $(this).attr('data-name'),
+            link = $(this).attr('href'),
+            title = $(this).find('.item__meta--title').text();
+        loadContent(link);
+    });
+
+}

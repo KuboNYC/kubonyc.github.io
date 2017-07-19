@@ -1,0 +1,148 @@
+.page__project
+    +block
+    +fix
+    +pin-tr
+    transition: all .6s ease-in-out
+    bottom: 0
+    background-color: $c-dark-gray
+    z-index: 10
+    width: calc(100% - 155px)
+    overflow: scroll
+    transform: translateX(100%)
+    +media($content-width)
+        width: 100%
+        max-height: calc(100% - 100px)
+        top: 100px
+        min-height: auto
+    .header__logo
+        +rel
+        z-index: auto
+    &--active
+        transform: translateX(0)
+
+.project
+    &__content
+    &__info
+        +block
+        +rel
+        +flex
+        +flex-wrap
+        +flex-column
+        +justify-between
+        +align-c
+        width: 100%
+        min-height: 50vh
+        color: white
+        section
+            +p
+            +media($content-width)
+                +p(20px)
+    &__block
+        +block
+        +rel
+        +flex
+        +flex-wrap
+        +flex-column
+        +justify-between
+        width: 100%
+        min-height: 100vh
+        color: white
+        & > *
+            +p
+            +media($content-width)
+                +p(20px)
+        &--caption
+            +abs
+            +pin-bl
+            +m-0
+            color: white
+        &--intro
+            height: 100vh
+            background-size: cover
+            background-position: center center
+            z-index: -1
+        &--info
+            +justify-c
+            +align-c
+            min-height: 50vh
+            +media($content-width)
+                min-height: auto
+                +p-t
+                +p-b
+            p
+                width: calc(50% - 20px)
+                +media($content-width)
+                    width: 100%
+            .right
+                align-self: flex-end
+    &__section
+        &--title
+            font-weight: 600
+            margin-bottom: 0
+    &__description
+        +block
+        +flex
+        +flex-wrap
+        +justify-between
+        section
+            width: calc(50% - 20px)
+            +media($content-width)
+                width: 100%
+            p
+                padding: 0 !important
+                +m-t-0
+            .p--black
+                +m-t-0
+    &__meta
+        +block
+        flex: 0 0 auto
+        color: white
+        *
+            padding:  0 !important
+    &__title
+        +m-0
+        padding-right: 40px
+        line-height: 1.1em
+        font-family: "Usual", sans-serif
+    &__disciplines
+        +m-t-0
+        font-weight: bold
+    &__navigation
+        +fix
+        +pin-bl
+        +ease(.5s)
+        padding: 40px 52.5px
+        z-index: 30
+        overflow: hidden
+        transform: translateX(-100%) rotate(-180deg)
+        +media($content-width)
+            +p(20px)
+        &--active
+            transform: translateX(0) rotate(0)
+        .project__close
+            cursor: pointer
+            .close, .arrow-right, .arrow-left
+                +ease
+                stroke: $c-orange
+            &:hover
+                background-color: transparent
+                padding: 0
+                +media($content-width)
+                    background-color: white
+                    padding: 5px
+                .close, .arrow-right, .arrow-left
+                    stroke: $c-dark-gray
+
+    &__close
+        +block
+        width: 50px
+        height: 50px
+        +flex
+        +align-c
+        +media($content-width)
+            background-color: white
+            padding: 5px
+            box-shadow: 0 5px 10px 0 rgba(black, 0.4)
+        svg
+            width: 100%
+            height: 100%

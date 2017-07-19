@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
+
+{% include head.html %}
+
+<body>
+    <div id="loading"></div>
+
+    {% include about-inactive.html %}
+
+    {% include work.html %}
+
+    <div class="page__project page__project--active">
+        <div class="project__content project__content--active" id="content__container">
+            <section class="project__block">
+                <div class="project__meta">
+                  <h1 class="project__title">{{ page.title }}</h1>
+                  <p class="project__disciplines" style="color: {{ page.color }}">{{ page.tags | sort | join: " \ " }}</p>
+                </div>
+                <div class="project__description">
+                    <section>
+                      <p class="project__section--title" style="color: {{ page.color }}">The Task</p>
+                      <p>{{page.task}}</p>
+                    </section>
+                    <section>
+                      <p class="project__section--title" style="color: {{ page.color }}">Our Approach</p>
+                      <p>{{page.approach}}</p>
+                    </section>
+                </div>
+            </section>
+            {{ content }}
+            <a href="/contact/" class="contact__link">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="project__navigation project__navigation--active">
+        <a class="project__close" href="/work/" data-name="work">{% include icon-close.html %}</a>
+    </div>
+
+      {% include footer.html %}
+
+  </body>
+
+</html>

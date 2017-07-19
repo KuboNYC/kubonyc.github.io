@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
+
+{% include head.html %}
+
+<body>
+    <div id="loading"></div>
+
+    {% include about.html %}
+
+    {% include work-inactive.html %}
+
+    <div class="page__project">
+        <div class="project__content" id="content__container">
+        </div>
+    </div>
+
+    <div class="project__navigation">
+        <a class="project__close" href="/work/"  data-name="work">{% include icon-close.html %}</a>
+    </div>
+
+      {% include footer.html %}
+  </body>
+
+</html>

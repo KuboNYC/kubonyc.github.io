@@ -1,0 +1,6 @@
+<header class="header" role="banner">
+    <div class="header__fade"></div>
+    {% assign default_paths = site.pages | map: "path" %}
+    {% assign page_paths = site.header_pages | default: default_paths %}
+    <a class="header__logo header__logo--small" href="{{ "/" | relative_url }}" data-name="home">{% include logo.html %}</a>
+</header>
