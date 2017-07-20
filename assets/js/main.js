@@ -14,8 +14,9 @@ var aboutTrigger = $('.about__trigger'),
 $(document).ready(function() {
     ajaxProject();
     layoutClickEvent();
-    formToggle();
     projectClose();
+    formToggle();
+    contactForm();
     if (window.location.href.indexOf('work') > -1) {
         History.replaceState({page: 'work'}, "Kubo at Work", '/work/');
     } else if (window.location.href.indexOf('contact') > -1) {
@@ -67,6 +68,7 @@ window.addEventListener("orientationchange", function() {
   }
 }, false);
 
+//  ----------------------------------------------------------------------------------------------------------------- //
 
 function projectActive() {
     projectContainer.scrollTop(0).addClass('page__project--active');
@@ -146,11 +148,14 @@ function layoutClickEvent() {
 }
 
 function formToggle() {
+    $('.require-business').prop('required', 'true');
     $('#form__toggle--general').click(function() {
         if ($(this).is(':checked')) {
             $('.business--visible').css('display', 'none');
             $('#message__field').css('display', 'block');
             $('#company__field').addClass('input__container--wide');
+            $('.require-business').prop('required', 'false');
+            $('.require-general').prop('required', 'true');
         }
     });
     $('#form__toggle--business').click(function() {
@@ -158,7 +163,8 @@ function formToggle() {
             $('.business--visible').css('display', 'block');
             $('#message__field').css('display', 'none');
             $('#company__field').removeClass('input__container--wide');
-            $('.business--visible > .require-if-active').prop('required', 'false');
+            $('.require-business').prop('required', 'true');
+            $('.require-general').prop('required', 'false');
         }
     });
     if ($('.require-if-active').is(':visible')) {
@@ -200,4 +206,43 @@ function ajaxProject() {
         loadContent(link);
     });
 
+}
+
+function contactForm(){
+  $("#form__contact").validate({
+    submitHandler: function(form) {
+      $.ajax({
+        url: "//formspree.io/jeff@kubonyc.com",
+        method: "POST",
+        data: {
+          name: $(form).find("input[name='Name']").val(),
+          email: $(form).find("input[name='Email']").val(),
+          company: $(form).find("input[name='Company']").val(),
+          message: $(form).find("textarea[name='Message']").val(),
+          phone: $(form).find("textarea[name='Phone']").val(),
+          service: $(form).find("textarea[name='service']").val(),
+          goals: $(form).find("textarea[name='Goals']").val(),
+          deadline: $(form).find("textarea[name='Deadline']").val(),
+          additional: $(form).find("textarea[name='Additional']").val()
+        },
+        dataType: "json",
+        success: function() {
+          $("#form__contact--submit").css('background-color','#00e676');
+          $('#form__contact--submit').val("Thank You! We'll Be In Touch!");
+          setTimeout(function(){
+            $("#form__contact--submit").css('background-color','#F44A2E');
+            $('#form__contact--submit').val("Submit");
+          }, 4000);
+        },
+        error: function() {
+          $("#form__contact--submit").css('background-color','#d32f2f');
+          $('#form__contact--submit').val("Something Went Wrong...Try Again!");
+          setTimeout(function(){
+            $("#form__contact--submit").css('background-color','#F44A2E');
+            $('#form__contact--submit').val("Submit");
+          }, 1000);
+        }
+      });
+    }
+  });
 }

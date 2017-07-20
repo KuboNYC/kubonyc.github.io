@@ -58,18 +58,19 @@
                     <label for="form__toggle--business" id="form__toggle--business--label" class="form__toggle--label">Business Inquiry</label>
                     <input type="radio" name="form__toggle" id="form__toggle--general">
                     <label for="form__toggle--general" class="form__toggle--label">General Inquiry</label>
-                    <form id="form__contact--business">
+                    <form id="form__contact" action="https://formspree.io/jeff@kubonyc.com"
+      method="POST">
                         <div class="input__container">
                             <label for="Name">Name*</label>
-                            <input class="require-if-active" type="text" name="Name" id="name" value="" tabindex="1">
+                            <input type="text" name="Name" id="name" value="" tabindex="1" required>
                         </div>
                         <div class="input__container">
                             <label for="Email">Email*</label>
-                            <input class="require-if-active" type="text" name="Email" id="email" value="" tabindex="2">
+                            <input type="text" name="Email" id="email" value="" tabindex="2" required>
                         </div>
                         <div class="input__container business--visible" id="company__field">
                             <label for="Company">Company*</label>
-                            <input class="require-if-active" type="text" name="Company" id="company" value="" tabindex="3">
+                            <input class="require-business" type="text" name="Company" id="company" value="" tabindex="3">
                         </div>
                         <div class="input__container business--visible">
                             <label for="Phone">Phone</label>
@@ -116,11 +117,11 @@
                         </div>
                         <div class="input__container--wide business--visible">
                             <label for="Goals">What are your goals? How will you measure success?*</label>
-                            <textarea class="require-if-active" name="goals" id="Goals" tabindex="13"></textarea>
+                            <textarea class="require-business" name="Goals" id="Goals" tabindex="13"></textarea>
                         </div>
                         <div class="input__container--wide business--visible">
                             <label for="Deadline">When can we start?</label>
-                            <input type="text" name="Deadline" id="deadline" value="" tabindex="14">
+                            <input type="text" name="Deadline" id="Deadline" value="" tabindex="14">
                         </div>
                         <div class="input__container--wide business--visible">
                             <label for="Additional">Anything Else?</label>
@@ -128,9 +129,9 @@
                         </div>
                         <div class="input__container--wide" id="message__field">
                             <label for="Message">Message*</label>
-                            <textarea class="require-if-active" name="message" id="Message" tabindex="3"></textarea>
+                            <textarea class="require-general" name="Message" id="Message" tabindex="3"></textarea>
                         </div>
-                        <input type="submit">
+                        <input type="submit" id="form__contact--submit">
                     </form>
                 </div>
             </div>

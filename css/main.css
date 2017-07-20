@@ -568,6 +568,17 @@ input[type="radio"] {
   -webkit-appearance: radio;
   display: inline; }
 
+.valid {
+  border: 1px solid #26C191 !important;
+  color: #26C191 !important; }
+
+.error {
+  border: 1px solid #d32f2f !important;
+  color: #d32f2f !important; }
+
+label.error {
+  border: none !important; }
+
 * a::-moz-selection {
   background-color: #171717; }
 
