@@ -8,8 +8,8 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
   <!-- Typekit -->
-  <script src="https://use.typekit.net/ymd8mbb.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <!-- <script src="https://use.typekit.net/ymd8mbb.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script> -->
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}">
@@ -38,7 +38,7 @@
     <!-- Scripts  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="/assets/js/history.js"></script>
-    
+
   {% if jekyll.environment == 'production' and site.google_analytics %}
   {% include google-analytics.html %}
   {% endif %}
