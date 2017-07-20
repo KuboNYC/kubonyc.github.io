@@ -967,9 +967,9 @@ hr {
             transform: translateX(465px); }
     @media screen and (max-width: 800px) {
       .page__work--inactive {
-        -webkit-transform: translateY(-webkit-calc(88vh - 100px));
-            -ms-transform: translateY(calc(88vh - 100px));
-                transform: translateY(calc(88vh - 100px)); } }
+        -webkit-transform: translateY(-webkit-calc(85vh - 100px));
+            -ms-transform: translateY(calc(85vh - 100px));
+                transform: translateY(calc(85vh - 100px)); } }
     .page__work--inactive .work__indicator {
       margin-left: 0;
       opacity: 1; }
