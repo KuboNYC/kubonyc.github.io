@@ -225,6 +225,7 @@ function contactForm(){
           deadline: $(form).find("textarea[name='Deadline']").val(),
           additional: $(form).find("textarea[name='Additional']").val()
         },
+        crossDomain: true,
         dataType: "json",
         success: function() {
           $("#form__contact--submit").css('background-color','#00e676');
