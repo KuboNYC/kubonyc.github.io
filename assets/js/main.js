@@ -226,6 +226,7 @@ function contactForm(){
           additional: $(form).find("textarea[name='Additional']").val()
         },
         crossDomain: true,
+        Content-Type: 'application/x-www-form-urlencoded',
         dataType: "json",
         success: function() {
           $("#form__contact--submit").css('background-color','#00e676');
