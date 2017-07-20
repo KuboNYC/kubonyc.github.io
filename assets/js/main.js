@@ -218,10 +218,10 @@ function contactForm(){
           email: $(form).find("input[name='Email']").val(),
           company: $(form).find("input[name='Company']").val(),
           message: $(form).find("textarea[name='Message']").val(),
-          phone: $(form).find("textarea[name='Phone']").val(),
-          service: $(form).find("textarea[name='service']").val(),
+          phone: $(form).find("input[name='Phone']").val(),
+          service: $(form).find("input[name='service']").val(),
           goals: $(form).find("textarea[name='Goals']").val(),
-          deadline: $(form).find("textarea[name='Deadline']").val(),
+          deadline: $(form).find("input[name='Deadline']").val(),
           additional: $(form).find("textarea[name='Additional']").val()
         },
         dataType: "json",
