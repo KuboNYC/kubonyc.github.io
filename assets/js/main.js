@@ -34,7 +34,6 @@ $(document).ready(function() {
 
 window.onstatechange = function(e) {
     var state = History.getState();
-    console.log(state.data.page);
     if (state.data.page == 'home') {
         projectInactive();
         aboutActive();
@@ -212,7 +211,7 @@ function contactForm(){
   $("#form__contact").validate({
     submitHandler: function(form) {
       $.ajax({
-        url: "//formspree.io/jeff@kubonyc.com",
+        url: "https://formspree.io/jeff@kubonyc.com",
         method: "POST",
         data: {
           name: $(form).find("input[name='Name']").val(),
@@ -225,8 +224,6 @@ function contactForm(){
           deadline: $(form).find("textarea[name='Deadline']").val(),
           additional: $(form).find("textarea[name='Additional']").val()
         },
-        crossDomain: true,
-        Content-Type: 'application/x-www-form-urlencoded',
         dataType: "json",
         success: function() {
           $("#form__contact--submit").css('background-color','#00e676');
