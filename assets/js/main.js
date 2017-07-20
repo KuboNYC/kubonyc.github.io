@@ -17,6 +17,7 @@ $(document).ready(function() {
     projectClose();
     formToggle();
     contactForm();
+    mobileSwipe();
     if (window.location.href.indexOf('work') > -1) {
         History.replaceState({page: 'work'}, "Kubo at Work", '/work/');
     } else if (window.location.href.indexOf('contact') > -1) {
@@ -196,7 +197,6 @@ function loadContent(e) {
 }
 
 function ajaxProject() {
-
     item.click(function(e) {
         e.preventDefault();
         var state = $(this).attr('data-name'),
@@ -204,7 +204,6 @@ function ajaxProject() {
             title = $(this).find('.item__meta--title').text();
         loadContent(link);
     });
-
 }
 
 function contactForm(){
@@ -234,4 +233,16 @@ function contactForm(){
       });
     }
   });
+}
+
+function mobileSwipe(){
+    workPage.swipe({
+        swipe: function(swipeUp){
+            var state = $(this).attr('data-name');
+            projectInactive();
+            workActive();
+            History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
+        },
+        threshold: '100px'
+    });
 }
