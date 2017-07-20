@@ -237,12 +237,14 @@ function contactForm(){
 
 function mobileSwipe(){
     workPage.swipe({
-        swipe: function(swipeUp){
-            var state = $(this).attr('data-name');
-            projectInactive();
-            workActive();
-            History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
+        swipe: function(event, direction){
+            if (direction === 'up'){
+              var state = $(this).attr('data-name');
+              projectInactive();
+              workActive();
+              History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
+            }
         },
-        threshold: '100px'
+        threshold: '25px'
     });
 }
