@@ -213,17 +213,7 @@ function contactForm(){
       $.ajax({
         url: "https://formspree.io/jeff@kubonyc.com",
         method: "POST",
-        data: {
-          name: $(form).find("input[name='Name']").val(),
-          email: $(form).find("input[name='Email']").val(),
-          company: $(form).find("input[name='Company']").val(),
-          message: $(form).find("textarea[name='Message']").val(),
-          phone: $(form).find("input[name='Phone']").val(),
-          service: $(form).find("input[name='service']").val(),
-          goals: $(form).find("textarea[name='Goals']").val(),
-          deadline: $(form).find("input[name='Deadline']").val(),
-          additional: $(form).find("textarea[name='Additional']").val()
-        },
+        data: $('#form__contact').serialize(),
         dataType: "json",
         success: function() {
           $("#form__contact--submit").css('background-color','#00e676');
@@ -231,7 +221,7 @@ function contactForm(){
           setTimeout(function(){
             $("#form__contact--submit").css('background-color','#F44A2E');
             $('#form__contact--submit').val("Submit");
-          }, 4000);
+          }, 3000);
         },
         error: function() {
           $("#form__contact--submit").css('background-color','#d32f2f');
