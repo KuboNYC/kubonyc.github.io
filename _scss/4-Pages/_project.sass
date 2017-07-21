@@ -44,9 +44,11 @@
         +flex-wrap
         +flex-column
         +justify-between
+        +ease(.5s)
         width: 100%
         min-height: 100vh
         color: white
+        opacity: 0
         & > *
             +p
             +media($content-width)
@@ -75,6 +77,22 @@
                     width: 100%
             .right
                 align-self: flex-end
+            .left
+                align-self: flex-start
+        &--footer
+            +flex-row
+            +align-stretch
+            min-height: auto
+            a
+                +block
+                +p(100px)
+                flex-grow: 1
+                font-size: 2em
+                color: white
+                text-align: center
+                text-decoration: none
+                &:hover
+                    background-color: $c-orange !important
     &__section
         &--title
             font-weight: 600
@@ -114,7 +132,7 @@
         padding: 40px 52.5px
         z-index: 30
         overflow: hidden
-        transform: translateX(-100%) rotate(-180deg)
+        transform: translateX(-100%) rotate(-45deg)
         +media($content-width)
             +p(20px)
         &--active
@@ -146,3 +164,6 @@
         svg
             width: 100%
             height: 100%
+
+.fade-in
+    opacity: 1

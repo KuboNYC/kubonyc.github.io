@@ -1,3 +1,7 @@
+//  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      Variables
+//  ----------------------------------------------------------------------------------------------------------------- //
+
 var aboutTrigger = $('.about__trigger'),
     aboutPage = $('.about__content'),
     workTrigger = $('.work__trigger'),
@@ -11,12 +15,19 @@ var aboutTrigger = $('.about__trigger'),
     projectContent = $('.project__content'),
     close = $('.project__close');
 
+//  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      Document
+//  ----------------------------------------------------------------------------------------------------------------- //
+
 $(document).ready(function() {
     ajaxProject();
     layoutClickEvent();
     projectClose();
     formToggle();
     contactForm();
+    if (projectContainer.hasClass('page__project--active')){
+        scrollFade();
+    }
     if (window.location.href.indexOf('work') > -1) {
         History.replaceState({page: 'work'}, "Kubo at Work", '/work/');
     } else if (window.location.href.indexOf('contact') > -1) {
@@ -31,6 +42,10 @@ $(document).ready(function() {
         History.replaceState({page: 'project'}, state.title, state.url);
     }
 });
+
+//  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      PopState
+//  ----------------------------------------------------------------------------------------------------------------- //
 
 window.onstatechange = function(e) {
     var state = History.getState();
@@ -57,9 +72,17 @@ window.onstatechange = function(e) {
     }
 };
 
+//  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      Loading
+//  ----------------------------------------------------------------------------------------------------------------- //
+
 window.onload = function() {
     $('#loading').addClass('loaded');
 };
+
+//  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      Mobile VH
+//  ----------------------------------------------------------------------------------------------------------------- //
 
 window.addEventListener("orientationchange", function() {
   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
@@ -68,8 +91,13 @@ window.addEventListener("orientationchange", function() {
 }, false);
 
 //  ----------------------------------------------------------------------------------------------------------------- //
+//                                                      Functions
+//  ----------------------------------------------------------------------------------------------------------------- //
+
+//      Project Animations
 
 function projectActive() {
+    scrollFade();
     projectContainer.scrollTop(0).addClass('page__project--active');
     projectContent.fadeIn('slow');
     projectNav.addClass('project__navigation--active');
@@ -91,6 +119,8 @@ function projectInactive() {
     projectNav.removeClass('project__navigation--active');
 }
 
+//      About Animations
+
 function aboutActive() {
     body.css('overflow', 'auto');
     workPage.css('overflow', 'hidden');
@@ -105,6 +135,8 @@ function aboutActive() {
     });
 }
 
+//      Work Animations
+
 function workActive() {
     workPage.css('overflow', 'auto');
     body.css('overflow', 'hidden');
@@ -115,6 +147,8 @@ function workActive() {
     aboutPage.removeClass('about--active');
     workContainer.removeClass('work__container--inactive');
 }
+
+//      About & Work Click Events
 
 function layoutClickEvent() {
     aboutTrigger.on('click', function(e) {
@@ -146,6 +180,8 @@ function layoutClickEvent() {
     });
 }
 
+//      Form Toggles & Requires
+
 function formToggle() {
     $('.require-business').prop('required', 'true');
     $('#form__toggle--general').click(function() {
@@ -173,6 +209,8 @@ function formToggle() {
     }
 }
 
+//      Project Close Animations
+
 function projectClose() {
     close.on('click', function(e) {
         e.preventDefault();
@@ -182,6 +220,8 @@ function projectClose() {
         History.pushState({page: state}, "Kubo at Work", $(this).attr('href'));
     });
 }
+
+//      Project AJAX
 
 function loadContent(e) {
     $.ajax(e, {
@@ -204,6 +244,8 @@ function ajaxProject() {
         loadContent(link);
     });
 }
+
+//      Form Validation & AJAX
 
 function contactForm(){
   $("#form__contact").validate({
@@ -232,4 +274,19 @@ function contactForm(){
       });
     }
   });
+}
+
+//      Project Content Animations
+
+function scrollFade(){
+    $('.project__block').each(function(){
+        var controller = new ScrollMagic.Controller();
+        var scene = new ScrollMagic.Scene({
+            triggerElement: this,
+            triggerHook: 0.8,
+            reverse: false
+        })
+        .setClassToggle(this, 'fade-in')
+        .addTo(controller);
+    });
 }

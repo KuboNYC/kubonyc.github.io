@@ -737,6 +737,9 @@ h5 {
   transition: opacity .5s ease-in-out;
   height: 100%;
   line-height: 1.5em; }
+  @media screen and (max-width: 800px) {
+    .about__content {
+      padding-bottom: 20vh; } }
 
 .about--active {
   opacity: 1;
@@ -1193,9 +1196,13 @@ hr {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   width: 100%;
   min-height: 100vh;
-  color: white; }
+  color: white;
+  opacity: 0; }
   .project__block > * {
     padding: 40px; }
     @media screen and (max-width: 800px) {
@@ -1238,6 +1245,34 @@ hr {
       -webkit-align-self: flex-end;
           -ms-flex-item-align: end;
               align-self: flex-end; }
+    .project__block--info .left {
+      -webkit-align-self: flex-start;
+          -ms-flex-item-align: start;
+              align-self: flex-start; }
+  .project__block--footer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    min-height: auto; }
+    .project__block--footer a {
+      display: block;
+      padding: 100px;
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      font-size: 2em;
+      color: white;
+      text-align: center;
+      text-decoration: none; }
+      .project__block--footer a:hover {
+        background-color: #F44A2E !important; }
 
 .project__section--title {
   font-weight: 600;
@@ -1298,9 +1333,9 @@ hr {
   padding: 40px 52.5px;
   z-index: 30;
   overflow: hidden;
-  -webkit-transform: translateX(-100%) rotate(-180deg);
-      -ms-transform: translateX(-100%) rotate(-180deg);
-          transform: translateX(-100%) rotate(-180deg); }
+  -webkit-transform: translateX(-100%) rotate(-45deg);
+      -ms-transform: translateX(-100%) rotate(-45deg);
+          transform: translateX(-100%) rotate(-45deg); }
   @media screen and (max-width: 800px) {
     .project__navigation {
       padding: 20px; } }
@@ -1346,3 +1381,6 @@ hr {
   .project__close svg {
     width: 100%;
     height: 100%; }
+
+.fade-in {
+  opacity: 1; }

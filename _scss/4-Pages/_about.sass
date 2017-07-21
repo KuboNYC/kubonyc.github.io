@@ -19,6 +19,8 @@
     transition: opacity .5s ease-in-out
     height: 100%
     line-height: 1.5em
+    +media($content-width)
+      +p-b(20vh)
   &--active
     opacity: 1
     +blur(0)
