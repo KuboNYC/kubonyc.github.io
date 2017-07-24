@@ -11,12 +11,13 @@
   +media($content-width)
     width: 100%
     max-height: calc(100% - 100px)
-    top: 100px
+    bottom: 0
+    top: auto
     min-height: auto
   &--inactive
     transform: translateX(465px)
     +media($content-width)
-      transform: translateY(calc(80vh - 100px))
+      transform: translateY(calc(100% - 88px))
     .work__indicator
       margin-left: 0
       opacity: 1
