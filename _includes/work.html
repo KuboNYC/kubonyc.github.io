@@ -6,6 +6,7 @@
             <p class="p--black">Selected Work</p>
             <p class="p--orange">&mdash;</p>
         </div>
+        <div class="work__indicator--mobile"></div>
         <div class="work__items">
             {% assign projects = site.projects | sort %} {% for project in site.projects %}
             <a href="{{ project.url }}" id="work__item" class="item" style="background-color: {{ project.color }}; background-image: url('/assets/img/{{ project.folder }}/thumb.png');" data-name="project">

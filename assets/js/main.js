@@ -130,6 +130,7 @@ function aboutActive() {
     workPage.addClass('page__work--inactive');
     workTrigger.addClass('work__trigger--enable');
     logo.removeClass('header__logo--small');
+    $('.work__indicator--mobile').removeClass('hide');
     workPage.animate({
         scrollTop: 0
     });
@@ -146,6 +147,7 @@ function workActive() {
     workPage.removeClass('page__work--inactive');
     aboutPage.removeClass('about--active');
     workContainer.removeClass('work__container--inactive');
+    $('.work__indicator--mobile').addClass('hide');
 }
 
 //      About & Work Click Events
