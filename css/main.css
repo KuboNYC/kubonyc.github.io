@@ -1249,6 +1249,29 @@ hr {
             background-size: cover;
     background-position: center center;
     z-index: -1; }
+  .project__block--web {
+    padding: 80px 60px 0 60px;
+    background-color: #EEEEEE;
+    min-height: auto; }
+    .project__block--web:nth-of-type(even) {
+      background-color: #171717; }
+    @media screen and (max-width: 800px) {
+      .project__block--web {
+        padding: 40px 20px 0 20px; } }
+    .project__block--web img, .project__block--web video {
+      position: relative;
+      padding: 0;
+      -webkit-box-shadow: 0 50px 100px 0 rgba(0, 0, 0, 0.3);
+              box-shadow: 0 50px 100px 0 rgba(0, 0, 0, 0.3);
+      border: 3px solid white;
+      border-bottom: none;
+      height: auto;
+      width: 100%; }
+      .project__block--web img:before, .project__block--web video:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 25px; }
   .project__block--info {
     -webkit-box-pack: center;
     -webkit-justify-content: center;

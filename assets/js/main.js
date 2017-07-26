@@ -117,6 +117,7 @@ function projectInactive() {
     projectContent.fadeOut('slow');
     projectContainer.removeClass('page__project--active');
     projectNav.removeClass('project__navigation--active');
+    body.css('overflow', 'auto');
 }
 
 //      About Animations
