@@ -64,20 +64,20 @@
             background-position: center center
             z-index: -1
         &--web
-            padding: 80px 60px 0 60px
-            background-color: $c-light-gray
+            padding: 10%
+            padding-bottom: 0
+            background-color: $c-dark-gray
             min-height: auto
             &:nth-of-type(even)
-                background-color: $c-dark-gray
+                background-color: $c-light-gray
             +media($content-width)
                 padding: 40px 20px 0 20px
             img, video
                 +rel
                 padding: 0
                 box-shadow: 0 50px 100px 0 rgba(black, 0.3)
-                border: 3px solid white
-                border-bottom: none
                 height: auto
+                max-width: 100%
                 width: 100%
                 &:before
                     content: ''
@@ -87,6 +87,8 @@
         &--info
             +justify-c
             +align-c
+            font-size: 1.2em
+            line-height: 1.4em
             min-height: 50vh
             +media($content-width)
                 min-height: auto
